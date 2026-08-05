@@ -1,0 +1,60 @@
+/* =========================================================
+   TOKENS — Ponto de Virada / Tema Aurum
+   Fonte única de verdade para cor, tipografia e espaçamento.
+   Mudar a marca começa e termina aqui.
+   ========================================================= */
+
+:root{
+  /* ---- Cor ---- */
+  --bg:            #0A0A0C;   /* preto profundo, base da página */
+  --surface:       #131316;   /* cards, blocos elevados */
+  --surface-2:     #1B1B1F;   /* hover / segunda elevação */
+  --grafite:       #202024;   /* transição sutil entre seções */
+
+  --border:        rgba(201,162,39,0.16);
+  --border-hover:  rgba(201,162,39,0.45);
+  --border-strong: rgba(201,162,39,0.65);
+
+  --gold:          #C9A227;
+  --gold-bright:   #E8C766;
+  --gold-glow:     rgba(201,162,39,0.14);
+  --gold-glow-soft:rgba(201,162,39,0.06);
+
+  --text:          #F2EFE9;
+  --text-muted:    #9C978C;
+  --text-dim:      #6B675F;
+
+  --shadow-gold:   0 20px 60px -20px rgba(201,162,39,0.18);
+  --shadow-soft:   0 12px 32px -12px rgba(0,0,0,0.5);
+
+  /* ---- Tipografia ---- */
+  --font-display: 'Fraunces', serif;
+  --font-body:    'Inter', -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+
+  /* ---- Espaçamento (base 8px) ---- */
+  --sp-1: 8px;
+  --sp-2: 16px;
+  --sp-3: 24px;
+  --sp-4: 40px;
+  --sp-5: 64px;
+  --sp-6: 96px;
+  --sp-7: 128px;
+
+  /* ---- Layout ---- */
+  --container-max: 1120px;
+  --container-narrow: 680px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+
+  /* ---- Movimento ---- */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur-base: 400ms;
+  --dur-slow: 700ms;
+}
+
+@media (prefers-reduced-motion: reduce){
+  :root{ --dur-fast:0ms; --dur-base:0ms; --dur-slow:0ms; }
+}

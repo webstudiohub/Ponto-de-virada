@@ -1,0 +1,77 @@
+/* =========================================================
+   LAYOUT — containers, grid, ritmo entre seções
+   ========================================================= */
+
+.container{
+  max-width:var(--container-max);
+  margin:0 auto;
+  padding:0 var(--sp-3);
+}
+.container--narrow{
+  max-width:var(--container-narrow);
+  margin:0 auto;
+  padding:0 var(--sp-3);
+}
+
+section{
+  position:relative;
+  padding:var(--sp-6) 0;
+}
+@media (max-width:720px){
+  section{ padding:var(--sp-5) 0; }
+}
+
+/* Alterna o tom de fundo entre seções — separa sem precisar de linha */
+.tone-a{ background:var(--bg); }
+.tone-b{ background:var(--grafite); }
+
+.grid{ display:grid; gap:var(--sp-3); }
+.grid-2{ grid-template-columns:repeat(2, 1fr); }
+.grid-3{ grid-template-columns:repeat(3, 1fr); }
+.grid-4{ grid-template-columns:repeat(4, 1fr); }
+.grid-7{ grid-template-columns:repeat(7, 1fr); }
+
+@media (max-width:960px){
+  .grid-4{ grid-template-columns:repeat(2, 1fr); }
+  .grid-7{ grid-template-columns:repeat(4, 1fr); }
+}
+@media (max-width:640px){
+  .grid-2, .grid-3, .grid-4{ grid-template-columns:1fr; }
+}
+
+.text-center{ text-align:center; }
+
+.section-head{
+  max-width:640px;
+  margin:0 auto var(--sp-4);
+  text-align:center;
+}
+
+/* ---- Divisor assinatura: losango dourado rotacionado ----
+   Substitui a linha genérica entre seções. Remete à ideia
+   de "virada" — um ponto que gira. */
+.divider-mark{
+  width:8px; height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+  margin:0 auto;
+  opacity:0.7;
+}
+
+/* Carrossel horizontal com scroll-snap — usado SÓ em mobile
+   para os 7 Pontos, evitando rolagem vertical excessiva em
+   telas pequenas. No desktop, .scroll-row não faz nada:
+   o elemento continua sendo o grid normal (.grid-4). */
+@media (max-width:960px){
+  .scroll-row{
+    display:flex;
+    gap:var(--sp-2);
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:var(--sp-2);
+    scrollbar-width:none;
+  }
+  .scroll-row::-webkit-scrollbar{ display:none; }
+  .scroll-row > *{ scroll-snap-align:start; flex:0 0 260px; }
+}

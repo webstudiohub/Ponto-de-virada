@@ -1,0 +1,356 @@
+/* =========================================================
+   COMPONENTS — peças reutilizáveis em toda a página
+   ========================================================= */
+
+/* ---- Botões ---- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:16px 32px;
+  font-family:var(--font-body);
+  font-weight:600;
+  font-size:0.95rem;
+  border-radius:var(--radius-md);
+  transition:transform var(--dur-fast) var(--ease),
+             box-shadow var(--dur-fast) var(--ease),
+             background var(--dur-fast) var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{
+  background:var(--gold);
+  color:#0A0A0C;
+  box-shadow:var(--shadow-gold);
+}
+.btn-primary:hover{
+  background:var(--gold-bright);
+  transform:translateY(-2px);
+  box-shadow:0 24px 70px -18px rgba(201,162,39,0.32);
+}
+.btn-primary:active{ transform:translateY(0) scale(0.98); }
+
+.btn-ghost{
+  background:transparent;
+  border:1px solid var(--border-hover);
+  color:var(--text);
+}
+.btn-ghost:hover{ border-color:var(--gold); background:var(--gold-glow-soft); }
+
+.btn-block{ width:100%; }
+
+/* ---- Nav (header) ---- */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:40;
+  backdrop-filter:blur(14px);
+  background:rgba(10,10,12,0.72);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:16px var(--sp-3);
+}
+.nav-logo{
+  font-family:var(--font-display);
+  font-weight:500;
+  font-size:1.1rem;
+  letter-spacing:-0.01em;
+}
+.nav-link{
+  font-family:var(--font-mono);
+  font-size:0.78rem;
+  letter-spacing:0.06em;
+  color:var(--text-muted);
+  transition:color var(--dur-fast) var(--ease);
+}
+.nav-link:hover{ color:var(--gold-bright); }
+
+/* ---- Cards ---- */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:var(--sp-3);
+  transition:transform var(--dur-base) var(--ease),
+             border-color var(--dur-base) var(--ease),
+             box-shadow var(--dur-base) var(--ease);
+}
+.card:hover{
+  border-color:var(--border-hover);
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-soft);
+}
+
+/* Card de pilar (Os 7 Pontos) */
+.card-pillar{
+  min-width:200px;
+}
+.card-pillar .icon{
+  width:32px; height:32px;
+  color:var(--gold);
+  opacity:0.55;
+  transition:opacity var(--dur-base) var(--ease);
+  margin-bottom:var(--sp-2);
+}
+.card-pillar.is-visible .icon{ opacity:1; }
+.card-pillar h3{ font-size:1.05rem; margin-bottom:6px; }
+.card-pillar p{ font-size:0.88rem; }
+
+/* Card de produto (Etapa 1/2/3, Pacote) */
+.card-product{
+  display:flex;
+  flex-direction:column;
+  gap:var(--sp-2);
+}
+.card-product--featured{
+  border:1px solid var(--border-strong);
+  box-shadow:var(--shadow-gold);
+  position:relative;
+}
+.badge-featured{
+  position:absolute;
+  top:-13px; left:50%;
+  transform:translateX(-50%);
+  background:var(--gold);
+  color:#0A0A0C;
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:5px 14px;
+  border-radius:20px;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+/* ---- Badge de estatística (dado-chave) ---- */
+.stat{
+  text-align:center;
+  min-width:150px;
+}
+.stat-number{
+  font-family:var(--font-mono);
+  font-size:clamp(2.2rem, 5vw, 3.2rem);
+  color:var(--gold);
+  font-weight:500;
+  line-height:1;
+  margin-bottom:8px;
+}
+.stat-label{ font-size:0.85rem; color:var(--text-muted); }
+
+/* ---- Accordion (FAQ) ---- */
+.accordion-item{
+  border-bottom:1px solid var(--border);
+}
+.accordion-trigger{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:22px 4px;
+  text-align:left;
+  font-family:var(--font-body);
+  font-weight:500;
+  font-size:1rem;
+}
+.accordion-icon{
+  font-family:var(--font-mono);
+  color:var(--gold);
+  font-size:1.2rem;
+  transition:transform var(--dur-base) var(--ease);
+  flex-shrink:0;
+  margin-left:16px;
+}
+.accordion-item.is-open .accordion-icon{ transform:rotate(45deg); }
+
+.accordion-panel{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height var(--dur-base) var(--ease);
+}
+.accordion-panel-inner{
+  padding:0 4px 22px;
+  font-size:0.94rem;
+  line-height:1.7;
+}
+
+/* ---- Timeline (Como Funciona) ---- */
+.timeline{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  position:relative;
+  margin-top:var(--sp-4);
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:19px; left:0; right:0;
+  height:1px;
+  background:var(--border);
+}
+.timeline-fill{
+  position:absolute;
+  top:19px; left:0;
+  height:1px;
+  background:var(--gold);
+  width:0%;
+  transition:width 1.1s var(--ease);
+}
+.timeline-step{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  flex:1;
+}
+.timeline-dot{
+  width:38px; height:38px;
+  border-radius:50%;
+  background:var(--surface);
+  border:1px solid var(--border-hover);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono);
+  color:var(--gold);
+  margin:0 auto var(--sp-2);
+  transition:border-color var(--dur-base) var(--ease), background var(--dur-base) var(--ease);
+}
+.timeline-step.is-active .timeline-dot{ background:var(--gold); color:#0A0A0C; }
+
+@media (max-width:640px){
+  .timeline{ flex-direction:column; gap:var(--sp-3); align-items:flex-start; }
+  .timeline::before{ top:0; bottom:0; left:19px; right:auto; width:1px; height:auto; }
+  .timeline-fill{ top:0; left:19px; width:1px; height:0%; }
+  .timeline-step{ display:flex; align-items:center; gap:var(--sp-2); text-align:left; }
+  .timeline-dot{ margin:0; flex-shrink:0; }
+}
+
+/* ---- Jornada (barra de progresso das 4 etapas) ---- */
+.journey{
+  display:flex;
+  align-items:center;
+  gap:0;
+}
+.journey-node{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  flex:1;
+  position:relative;
+}
+.journey-dot{
+  width:14px; height:14px;
+  border-radius:50%;
+  background:var(--surface-2);
+  border:1px solid var(--border-hover);
+  z-index:1;
+}
+.journey-node--active .journey-dot{ background:var(--gold); box-shadow:0 0 0 5px var(--gold-glow); }
+.journey-node--locked{ opacity:0.4; }
+.journey-line{
+  position:absolute;
+  top:6px; left:50%; right:-50%;
+  height:1px;
+  background:var(--border);
+  z-index:0;
+}
+.journey-node:last-child .journey-line{ display:none; }
+.journey-label{
+  font-family:var(--font-mono);
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  text-align:center;
+  color:var(--text-dim);
+}
+.journey-node--active .journey-label{ color:var(--gold-bright); }
+
+@media (max-width:640px){
+  .journey{ flex-direction:column; align-items:flex-start; gap:var(--sp-3); }
+  .journey-node{ flex-direction:row; align-items:center; }
+  .journey-line{ top:0; bottom:-24px; left:6px; right:auto; width:1px; height:auto; }
+}
+
+/* ---- Comparação (antes do CTA principal) ---- */
+.compare{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+}
+@media (max-width:640px){ .compare{ grid-template-columns:1fr; } }
+
+.compare-col{ background:var(--surface); padding:var(--sp-4) var(--sp-3); }
+.compare-col--negative{ opacity:0.65; }
+.compare-col--positive{ background:var(--surface-2); }
+.compare-title{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--font-display);
+  font-size:1.2rem;
+  margin-bottom:var(--sp-2);
+}
+.compare-mark{ font-family:var(--font-mono); font-size:1.3rem; }
+.compare-col--negative .compare-mark{ color:var(--text-dim); }
+.compare-col--positive .compare-mark{ color:var(--gold); }
+.compare-list{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.compare-list li{ font-size:0.92rem; color:var(--text-muted); padding-left:18px; position:relative; }
+.compare-list li::before{ content:"—"; position:absolute; left:0; color:var(--text-dim); }
+.compare-col--positive .compare-list li::before{ content:"—"; color:var(--gold); }
+
+/* ---- Sticky mobile CTA bar ---- */
+.sticky-cta{
+  position:fixed;
+  bottom:0; left:0; right:0;
+  z-index:50;
+  display:none;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 18px;
+  background:rgba(10,10,12,0.88);
+  backdrop-filter:blur(16px);
+  border-top:1px solid var(--border-hover);
+  transform:translateY(0);
+  transition:transform var(--dur-base) var(--ease);
+}
+.sticky-cta.is-hidden{ transform:translateY(100%); }
+.sticky-cta-price{
+  font-family:var(--font-mono);
+  font-size:0.95rem;
+  color:var(--gold);
+  white-space:nowrap;
+}
+@media (max-width:720px){
+  .sticky-cta{ display:flex; }
+}
+
+/* ---- Reveal on scroll (usado pelo scrollReveal.js) ---- */
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+/* Assinatura visual: revelação com blur → foco.
+   Usada nos blocos de maior peso narrativo (Grande Ideia,
+   Dados de Mercado) — simula o momento de "enxergar". */
+.reveal-focus{
+  opacity:0;
+  filter:blur(6px);
+  transform:translateY(16px);
+  transition:opacity var(--dur-slow) var(--ease),
+             filter var(--dur-slow) var(--ease),
+             transform var(--dur-slow) var(--ease);
+}
+.reveal-focus.is-visible{ opacity:1; filter:blur(0); transform:translateY(0); }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal, .reveal-focus{ opacity:1; transform:none; filter:none; transition:none; }
+}
